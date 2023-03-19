@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
     ng add angular-datatables
 
-# Select datatable type ( DataTables (Default) )
+- Select datatable type ( DataTables (Default) )
 
 ## Install more required library for datatable
 
@@ -40,3 +40,51 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     npm install angular-datatables --save
     npm install @types/jquery --save-dev
     npm install @types/datatables.net --save-dev
+
+## Import datatable module in your module.ts
+
+    import { DataTablesModule } from "angular-datatables";
+    imports: [DataTablesModule]
+
+## Add path inside angular json
+
+    "projects": {
+        "your-app-name": {
+          "architect": {
+            "build": {
+              "options": {
+                "styles": [
+                  "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+                ],
+                "scripts": [
+                  "node_modules/jquery/dist/jquery.js",
+                  "node_modules/datatables.net/js/jquery.dataTables.js"
+                ]
+              }
+    }
+
+## create arrays for column and datalist
+
+    cloumns = ['Id', 'firstName', 'lastName']
+    employeeList = [
+        { Id: 1, firstName: "John", lastName: "Doe" },
+        { Id: 2, firstName: "Jane", lastName: "Smith" },
+        { Id: 3, firstName: "Bob", lastName: "Johnson" }
+    ];
+
+## write html code
+
+    <table datatable class="row-border hover">
+      <thead>
+        <tr>
+          <th *ngFor="let column of cloumns">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of employeeList">
+          <td>{{ emp.Id }}</td>
+          <td>{{ emp.firstName }}</td>
+          <td>{{ emp.lastName }}</td>
+        </tr>
+      </tbody>
+    </table>
