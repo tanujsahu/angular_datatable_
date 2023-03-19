@@ -1,6 +1,6 @@
 <router-outlet></router-outlet>
 
-<table datatable class="row-border hover">
+<table [dtOptions]="dtOptions" datatable class="row-border hover">
   <thead>
     <tr>
       <th *ngFor="let column of cloumns">{{ column }}</th>
